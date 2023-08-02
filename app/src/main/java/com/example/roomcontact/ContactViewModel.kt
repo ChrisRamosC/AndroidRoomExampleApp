@@ -65,12 +65,14 @@ class ContactViewModel(
                 viewModelScope.launch {
                     dao.upsertContact(contact)
                 }
-                _state.update { it.copy(
-                    isAddingContact =  false,
-                    firstName = "",
-                    lastName = "",
-                    phoneNumber = ""
-                ) }
+                _state.update {
+                    it.copy(
+                        isAddingContact = false,
+                        firstName = "",
+                        lastName = "",
+                        phoneNumber = ""
+                    )
+                }
             }
 
             is ContactEvent.SetFirstName -> {
